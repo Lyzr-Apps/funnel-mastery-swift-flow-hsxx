@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    {"id": "input_node", "type": "Input", "label": "User Campaign Input", "nodeCategory": "input"},
+    {"id": "content_orchestrator_manager", "type": "Agent", "label": "Content Orchestrator Manager", "nodeCategory": "agent"},
+    {"id": "ad_copy_hooks_agent", "type": "Agent", "label": "Ad Copy & Hooks Agent", "nodeCategory": "agent"},
+    {"id": "email_sequence_agent", "type": "Agent", "label": "Email Sequence Generator Agent", "nodeCategory": "agent"},
+    {"id": "social_post_agent", "type": "Agent", "label": "Social Post & Caption Agent", "nodeCategory": "agent"},
+    {"id": "image_creator_agent", "type": "Agent", "label": "Image Creator Agent", "nodeCategory": "agent"},
+    {"id": "distribution_agent", "type": "Agent", "label": "Distribution Agent", "nodeCategory": "agent"},
+    {"id": "email_automation_agent", "type": "Agent", "label": "Email Automation Agent", "nodeCategory": "agent"},
+    {"id": "analytics_agent", "type": "Agent", "label": "Analytics & Optimization Agent", "nodeCategory": "agent"},
+    {"id": "output_node", "type": "Output", "label": "Campaign Output", "nodeCategory": "end"}
+  ],
+  "edges": [
+    {"source": "input_node", "target": "content_orchestrator_manager"},
+    {"source": "content_orchestrator_manager", "target": "ad_copy_hooks_agent"},
+    {"source": "content_orchestrator_manager", "target": "email_sequence_agent"},
+    {"source": "content_orchestrator_manager", "target": "social_post_agent"},
+    {"source": "content_orchestrator_manager", "target": "image_creator_agent"},
+    {"source": "image_creator_agent", "target": "distribution_agent"},
+    {"source": "distribution_agent", "target": "email_automation_agent"},
+    {"source": "email_automation_agent", "target": "analytics_agent"},
+    {"source": "analytics_agent", "target": "output_node"}
+  ]
+}

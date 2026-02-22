@@ -6,8 +6,8 @@ import {
   FiHome, FiEdit3, FiArchive, FiCalendar, FiMail, FiBarChart2,
   FiImage, FiSend, FiZap, FiTrendingUp, FiTrendingDown, FiUsers,
   FiDollarSign, FiTarget, FiCheck, FiX, FiLoader, FiChevronRight,
-  FiSearch, FiFilter, FiEye, FiTrash2, FiClock, FiPlus,
-  FiRefreshCw, FiExternalLink, FiCopy, FiChevronDown
+  FiSearch, FiEye, FiTrash2,
+  FiExternalLink, FiCopy
 } from 'react-icons/fi'
 import {
   BsFacebook, BsInstagram, BsPinterest, BsLinkedin, BsTiktok, BsTwitterX
