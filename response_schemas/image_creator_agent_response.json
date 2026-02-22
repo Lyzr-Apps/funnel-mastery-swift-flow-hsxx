@@ -1,0 +1,30 @@
+{
+  "agent_name": "Image Creator Agent",
+  "agent_id": "699a24ad8a81cf15f59e03b0",
+  "description": "Generates AI image prompts and visuals for ads, social posts, and landing pages based on selected content pieces",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "image_prompt": "string",
+    "image_description": "string",
+    "platform": "string",
+    "dimensions": "string",
+    "style_notes": "string"
+  },
+  "example_response": {
+    "image_prompt": "sample string",
+    "image_description": "sample string",
+    "platform": "sample string",
+    "dimensions": "sample string",
+    "style_notes": "sample string"
+  },
+  "has_module_outputs": true,
+  "module_outputs_example": {
+    "artifact_files": [
+      {
+        "file_url": "https://example.com/image.png"
+      }
+    ]
+  }
+}

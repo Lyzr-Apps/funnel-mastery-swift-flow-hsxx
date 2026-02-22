@@ -1,0 +1,24 @@
+{
+  "agent_name": "Email Automation Agent",
+  "agent_id": "699a24cb8a81cf15f59e03b4",
+  "description": "Manages lead nurture sequences - triggers welcome, product pitch, follow-up, abandoned funnel, upsell, bonus delivery sequences, and newsletter sends via connected ESP",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "status": "string",
+    "sequence_type": "string",
+    "emails_queued": "number",
+    "recipient_email": "string",
+    "next_email_time": "string",
+    "message": "string"
+  },
+  "example_response": {
+    "status": "sample string",
+    "sequence_type": "sample string",
+    "emails_queued": 0,
+    "recipient_email": "sample string",
+    "next_email_time": "sample string",
+    "message": "sample string"
+  }
+}

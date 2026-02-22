@@ -1,0 +1,34 @@
+{
+  "agent_name": "Distribution Agent",
+  "agent_id": "699a24ca520a48afa0342d47",
+  "description": "Schedules, queues, and auto-publishes approved content across platforms with link tracking and instant Rocket Post capability",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "status": "string",
+    "scheduled_posts": [
+      {
+        "platform": "string",
+        "scheduled_time": "string",
+        "content_preview": "string",
+        "tracking_url": "string",
+        "status": "string"
+      }
+    ],
+    "message": "string"
+  },
+  "example_response": {
+    "status": "sample string",
+    "scheduled_posts": [
+      {
+        "platform": "sample string",
+        "scheduled_time": "sample string",
+        "content_preview": "sample string",
+        "tracking_url": "sample string",
+        "status": "sample string"
+      }
+    ],
+    "message": "sample string"
+  }
+}

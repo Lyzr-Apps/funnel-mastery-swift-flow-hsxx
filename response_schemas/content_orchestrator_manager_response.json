@@ -1,0 +1,110 @@
+{
+  "agent_name": "Content Orchestrator Manager",
+  "agent_id": "699a247e738daf1ab82e84fe",
+  "description": "Coordinates sub-agents to generate a complete campaign content suite (ad copy, emails, social posts, hooks, scripts) in one shot, maintaining empathetic and value-driven brand voice across all outputs",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "campaign_summary": "string",
+    "ad_copies": [
+      {
+        "platform": "string",
+        "headline": "string",
+        "body": "string",
+        "cta": "string"
+      }
+    ],
+    "hooks": [
+      {
+        "type": "string",
+        "text": "string"
+      }
+    ],
+    "scripts": [
+      {
+        "format": "string",
+        "script": "string"
+      }
+    ],
+    "email_sequences": [
+      {
+        "sequence_type": "string",
+        "emails": [
+          {
+            "order": "number",
+            "subject_line": "string",
+            "subject_line_variant": "string",
+            "preview_text": "string",
+            "body": "string",
+            "cta": "string",
+            "delay_days": "number"
+          }
+        ]
+      }
+    ],
+    "social_posts": [
+      {
+        "platform": "string",
+        "content_type": "string",
+        "caption": "string",
+        "hashtags": [
+          "string"
+        ],
+        "cta": "string",
+        "best_posting_time": "string"
+      }
+    ]
+  },
+  "example_response": {
+    "campaign_summary": "sample string",
+    "ad_copies": [
+      {
+        "platform": "sample string",
+        "headline": "sample string",
+        "body": "sample string",
+        "cta": "sample string"
+      }
+    ],
+    "hooks": [
+      {
+        "type": "sample string",
+        "text": "sample string"
+      }
+    ],
+    "scripts": [
+      {
+        "format": "sample string",
+        "script": "sample string"
+      }
+    ],
+    "email_sequences": [
+      {
+        "sequence_type": "sample string",
+        "emails": [
+          {
+            "order": 0,
+            "subject_line": "sample string",
+            "subject_line_variant": "sample string",
+            "preview_text": "sample string",
+            "body": "sample string",
+            "cta": "sample string",
+            "delay_days": 0
+          }
+        ]
+      }
+    ],
+    "social_posts": [
+      {
+        "platform": "sample string",
+        "content_type": "sample string",
+        "caption": "sample string",
+        "hashtags": [
+          "sample string"
+        ],
+        "cta": "sample string",
+        "best_posting_time": "sample string"
+      }
+    ]
+  }
+}

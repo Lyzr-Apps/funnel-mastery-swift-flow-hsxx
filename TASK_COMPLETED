@@ -1,0 +1,14 @@
+FunnelForge - AI-Powered Sales Funnel Automation Hub - Complete
+
+Agents Created:
+- Content Orchestrator Manager: 699a247e738daf1ab82e84fe (manages 3 sub-agents)
+- Ad Copy & Hooks Agent: 699a245f5c51ba0c6ba1b1ab (sub-agent)
+- Email Sequence Generator Agent: 699a245f8a81cf15f59e03a8 (sub-agent)
+- Social Post & Caption Agent: 699a245f22d14f71e7292365 (sub-agent)
+- Image Creator Agent: 699a24ad8a81cf15f59e03b0 (image_output_config: dall-e-3)
+- Distribution Agent: 699a24ca520a48afa0342d47 (Twitter Composio tools)
+- Email Automation Agent: 699a24cb8a81cf15f59e03b4 (Gmail Composio tools)
+- Analytics & Optimization Agent: 699a24ae4274f089c16d43f7 (Perplexity sonar-pro)
+
+UI Screens: Dashboard, Content Generator, Content Bank, Content Calendar, Email Automation, Analytics
+Theme: Sunset (orange/coral palette)

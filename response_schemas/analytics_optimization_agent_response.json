@@ -1,0 +1,80 @@
+{
+  "agent_name": "Analytics & Optimization Agent",
+  "agent_id": "699a24ae4274f089c16d43f7",
+  "description": "Analyzes funnel performance data, evaluates A/B test results, and generates AI-based optimization suggestions for hooks, images, headlines, and landing pages",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "performance_summary": "string",
+    "kpi_analysis": [
+      {
+        "metric": "string",
+        "value": "string",
+        "trend": "string",
+        "insight": "string"
+      }
+    ],
+    "ab_test_results": [
+      {
+        "test_name": "string",
+        "variant_a": "string",
+        "variant_b": "string",
+        "winner": "string",
+        "confidence": "string"
+      }
+    ],
+    "optimization_suggestions": [
+      {
+        "area": "string",
+        "suggestion": "string",
+        "expected_impact": "string",
+        "priority": "string"
+      }
+    ],
+    "traffic_breakdown": [
+      {
+        "source": "string",
+        "clicks": "string",
+        "conversions": "string",
+        "epc": "string"
+      }
+    ]
+  },
+  "example_response": {
+    "performance_summary": "sample string",
+    "kpi_analysis": [
+      {
+        "metric": "sample string",
+        "value": "sample string",
+        "trend": "sample string",
+        "insight": "sample string"
+      }
+    ],
+    "ab_test_results": [
+      {
+        "test_name": "sample string",
+        "variant_a": "sample string",
+        "variant_b": "sample string",
+        "winner": "sample string",
+        "confidence": "sample string"
+      }
+    ],
+    "optimization_suggestions": [
+      {
+        "area": "sample string",
+        "suggestion": "sample string",
+        "expected_impact": "sample string",
+        "priority": "sample string"
+      }
+    ],
+    "traffic_breakdown": [
+      {
+        "source": "sample string",
+        "clicks": "sample string",
+        "conversions": "sample string",
+        "epc": "sample string"
+      }
+    ]
+  }
+}
