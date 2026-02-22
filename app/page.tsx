@@ -23,7 +23,7 @@ const AGENT_IDS = {
 } as const
 
 // ─── Types ────────────────────────────────────────────────
-type Screen = 'dashboard' | 'generator' | 'content-bank' | 'calendar' | 'email' | 'analytics'
+type Screen = 'dashboard' | 'generator' | 'content-bank' | 'calendar' | 'email' | 'analytics' | 'settings'
 
 interface AdCopy { platform: string; headline: string; body: string; cta: string }
 interface Hook { type: string; text: string }
@@ -207,7 +207,7 @@ function EmptyState({ icon, title, description, action, onAction }: {
 }
 
 // ─── Sidebar ──────────────────────────────────────────────
-function Sidebar({ active, onNavigate }: { active: Screen; onNavigate: (s: Screen) => void }) {
+function Sidebar({ active, onNavigate, appName, appTagline }: { active: Screen; onNavigate: (s: Screen) => void; appName: string; appTagline: string }) {
   const items: { id: Screen; label: string; icon: React.ReactNode }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: <FiHome size={18} /> },
     { id: 'generator', label: 'Content Generator', icon: <FiEdit3 size={18} /> },
@@ -215,12 +215,13 @@ function Sidebar({ active, onNavigate }: { active: Screen; onNavigate: (s: Scree
     { id: 'calendar', label: 'Content Calendar', icon: <FiCalendar size={18} /> },
     { id: 'email', label: 'Email Automation', icon: <FiMail size={18} /> },
     { id: 'analytics', label: 'Analytics', icon: <FiBarChart2 size={18} /> },
+    { id: 'settings', label: 'Settings', icon: <FiSettings size={18} /> },
   ]
   return (
     <aside className="w-60 min-h-screen bg-[hsl(30,38%,95%)] border-r border-[hsl(30,35%,88%)] flex flex-col shrink-0">
       <div className="px-5 py-5 border-b border-[hsl(30,35%,88%)]">
-        <h1 className="text-xl font-bold tracking-[-0.01em] text-[hsl(20,40%,10%)] font-serif">FunnelForge</h1>
-        <p className="text-xs text-[hsl(20,25%,45%)] mt-0.5">Sales Funnel Automation</p>
+        <h1 className="text-xl font-bold tracking-[-0.01em] text-[hsl(20,40%,10%)] font-serif">{appName}</h1>
+        <p className="text-xs text-[hsl(20,25%,45%)] mt-0.5">{appTagline}</p>
       </div>
       <nav className="flex-1 py-3 px-3 space-y-0.5">
         {items.map((item) => (
@@ -1290,11 +1291,140 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
   )
 }
 
+// ─── Settings Screen ──────────────────────────────────────
+function SettingsScreen({ appName, appTagline, onUpdateName, onUpdateTagline }: {
+  appName: string; appTagline: string
+  onUpdateName: (name: string) => void; onUpdateTagline: (tagline: string) => void
+}) {
+  const [nameInput, setNameInput] = useState(appName)
+  const [taglineInput, setTaglineInput] = useState(appTagline)
+  const [saved, setSaved] = useState(false)
+
+  const handleSave = () => {
+    onUpdateName(nameInput.trim() || 'FunnelForge')
+    onUpdateTagline(taglineInput.trim() || 'Sales Funnel Automation')
+    setSaved(true)
+    setTimeout(() => setSaved(false), 3000)
+  }
+
+  return (
+    <div className="space-y-6 max-w-2xl">
+      <div>
+        <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Settings</h2>
+        <p className="text-sm text-[hsl(20,25%,45%)]">Customize your app preferences</p>
+      </div>
+
+      {saved && <InlineMessage type="success" message="Settings saved successfully!" />}
+
+      {/* Branding */}
+      <GlassCard className="p-6 space-y-5">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="w-10 h-10 rounded-xl bg-[hsl(24,95%,53%)]/10 flex items-center justify-center">
+            <FiSettings size={20} className="text-[hsl(24,95%,53%)]" />
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-[hsl(20,40%,10%)]">Branding</h3>
+            <p className="text-xs text-[hsl(20,25%,45%)]">Change how your app appears in the sidebar and header</p>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">App Name</label>
+          <input
+            type="text"
+            value={nameInput}
+            onChange={e => setNameInput(e.target.value)}
+            placeholder="FunnelForge"
+            className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(24,95%,53%)] focus:border-transparent outline-none"
+          />
+          <p className="text-xs text-[hsl(20,25%,45%)] mt-1">This name appears in the sidebar header and page title</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Tagline</label>
+          <input
+            type="text"
+            value={taglineInput}
+            onChange={e => setTaglineInput(e.target.value)}
+            placeholder="Sales Funnel Automation"
+            className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(24,95%,53%)] focus:border-transparent outline-none"
+          />
+          <p className="text-xs text-[hsl(20,25%,45%)] mt-1">Short description shown below the app name</p>
+        </div>
+
+        {/* Preview */}
+        <div>
+          <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Preview</label>
+          <div className="inline-flex flex-col gap-0.5 px-5 py-4 rounded-[0.875rem] bg-[hsl(30,38%,95%)] border border-[hsl(30,35%,88%)]">
+            <span className="text-lg font-bold tracking-[-0.01em] text-[hsl(20,40%,10%)] font-serif">{nameInput || 'FunnelForge'}</span>
+            <span className="text-xs text-[hsl(20,25%,45%)]">{taglineInput || 'Sales Funnel Automation'}</span>
+          </div>
+        </div>
+
+        <PrimaryButton onClick={handleSave} className="w-full justify-center">
+          <FiCheck size={16} /> Save Changes
+        </PrimaryButton>
+      </GlassCard>
+
+      {/* Products */}
+      <GlassCard className="p-6 space-y-4">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="w-10 h-10 rounded-xl bg-[hsl(24,95%,53%)]/10 flex items-center justify-center">
+            <FiArchive size={20} className="text-[hsl(24,95%,53%)]" />
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-[hsl(20,40%,10%)]">Products & Offers</h3>
+            <p className="text-xs text-[hsl(20,25%,45%)]">Your current digital products and affiliate offers</p>
+          </div>
+        </div>
+        <div className="space-y-2">
+          {PRODUCTS.map(p => (
+            <div key={p} className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white border border-[hsl(30,35%,88%)]">
+              <span className="text-sm text-[hsl(20,40%,10%)]">{p}</span>
+              <StatusBadge status="active" />
+            </div>
+          ))}
+        </div>
+      </GlassCard>
+
+      {/* Connected Platforms */}
+      <GlassCard className="p-6 space-y-4">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="w-10 h-10 rounded-xl bg-[hsl(24,95%,53%)]/10 flex items-center justify-center">
+            <FiExternalLink size={20} className="text-[hsl(24,95%,53%)]" />
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-[hsl(20,40%,10%)]">Connected Platforms</h3>
+            <p className="text-xs text-[hsl(20,25%,45%)]">Active integrations for distribution and email</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          {PLATFORMS.map(p => {
+            const Icon = p.icon
+            return (
+              <div key={p.id} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-[hsl(30,35%,88%)]">
+                <Icon size={18} style={{ color: p.color }} />
+                <div className="flex-1">
+                  <span className="text-sm font-medium text-[hsl(20,40%,10%)]">{p.label}</span>
+                </div>
+                <StatusBadge status={p.id === 'x' ? 'active' : 'draft'} />
+              </div>
+            )
+          })}
+        </div>
+        <p className="text-xs text-[hsl(20,25%,45%)]">Twitter/X and Gmail are connected via Composio. Other platforms require manual API setup.</p>
+      </GlassCard>
+    </div>
+  )
+}
+
 // ─── Main App ─────────────────────────────────────────────
 export default function FunnelForgePage() {
   const [activeScreen, setActiveScreen] = useState<Screen>('dashboard')
   const [contentBank, setContentBank] = useState<ContentBankItem[]>([])
   const [calendarItems, setCalendarItems] = useState<CalendarEvent[]>([])
+  const [appName, setAppName] = useState('FunnelForge')
+  const [appTagline, setAppTagline] = useState('Sales Funnel Automation')
 
   const handleContentGenerated = useCallback((data: ContentData) => {
     const items: ContentBankItem[] = []
@@ -1370,7 +1500,7 @@ export default function FunnelForgePage() {
 
   return (
     <div className="flex min-h-screen" style={{ background: 'linear-gradient(135deg, hsl(30,50%,97%) 0%, hsl(20,45%,95%) 35%, hsl(40,40%,96%) 70%, hsl(15,35%,97%) 100%)' }}>
-      <Sidebar active={activeScreen} onNavigate={setActiveScreen} />
+      <Sidebar active={activeScreen} onNavigate={setActiveScreen} appName={appName} appTagline={appTagline} />
 
       <main className="flex-1 min-h-screen overflow-y-auto">
         {/* Header */}
@@ -1384,6 +1514,7 @@ export default function FunnelForgePage() {
                 {activeScreen === 'calendar' && 'Content Calendar'}
                 {activeScreen === 'email' && 'Email Automation'}
                 {activeScreen === 'analytics' && 'Analytics'}
+                {activeScreen === 'settings' && 'Settings'}
               </h2>
               <StatusBadge status="active" />
             </div>
@@ -1409,6 +1540,14 @@ export default function FunnelForgePage() {
           )}
           {activeScreen === 'email' && <EmailScreen />}
           {activeScreen === 'analytics' && <AnalyticsScreen />}
+          {activeScreen === 'settings' && (
+            <SettingsScreen
+              appName={appName}
+              appTagline={appTagline}
+              onUpdateName={setAppName}
+              onUpdateTagline={setAppTagline}
+            />
+          )}
         </div>
       </main>
     </div>
