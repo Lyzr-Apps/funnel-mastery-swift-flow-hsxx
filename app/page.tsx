@@ -7,7 +7,7 @@ import {
   FiImage, FiSend, FiZap, FiTrendingUp, FiTrendingDown, FiUsers,
   FiDollarSign, FiTarget, FiCheck, FiX, FiLoader, FiChevronRight,
   FiSearch, FiEye, FiTrash2,
-  FiExternalLink, FiCopy
+  FiExternalLink, FiCopy, FiSettings
 } from 'react-icons/fi'
 import {
   BsFacebook, BsInstagram, BsPinterest, BsLinkedin, BsTiktok, BsTwitterX
