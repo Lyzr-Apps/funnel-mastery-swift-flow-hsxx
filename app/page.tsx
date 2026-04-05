@@ -105,7 +105,7 @@ function GlassCard({ children, className = '', onClick }: { children: React.Reac
   return (
     <div
       onClick={onClick}
-      className={`rounded-[0.875rem] border border-white/[0.18] bg-[hsl(30,40%,96%)]/75 backdrop-blur-[16px] shadow-md ${className}`}
+      className={`rounded-[0.875rem] border border-white/[0.18] bg-[hsl(250,25%,96%)]/75 backdrop-blur-[16px] shadow-md ${className}`}
       style={{ cursor: onClick ? 'pointer' : undefined }}
     >
       {children}
@@ -115,9 +115,9 @@ function GlassCard({ children, className = '', onClick }: { children: React.Reac
 
 function StatusBadge({ status }: { status: string }) {
   const colors: Record<string, string> = {
-    draft: 'bg-[hsl(30,30%,90%)] text-[hsl(20,25%,45%)]',
+    draft: 'bg-[hsl(250,18%,90%)] text-[hsl(250,15%,50%)]',
     approved: 'bg-green-100 text-green-700',
-    published: 'bg-[hsl(24,95%,53%)]/10 text-[hsl(24,95%,53%)]',
+    published: 'bg-[hsl(262,83%,58%)]/10 text-[hsl(262,83%,58%)]',
     active: 'bg-green-100 text-green-700',
     paused: 'bg-yellow-100 text-yellow-700',
     queued: 'bg-blue-100 text-blue-700',
@@ -138,7 +138,7 @@ function PrimaryButton({ children, onClick, disabled, loading, className = '' }:
       onClick={onClick}
       disabled={disabled || loading}
       className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-[0.875rem] font-semibold text-sm
-        bg-[hsl(24,95%,53%)] text-white hover:bg-[hsl(24,95%,48%)] transition-all
+        bg-[hsl(262,83%,58%)] text-white hover:bg-[hsl(262,83%,52%)] transition-all
         disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg ${className}`}
     >
       {loading && <FiLoader className="animate-spin" size={16} />}
@@ -152,8 +152,8 @@ function SecondaryButton({ children, onClick, className = '' }: { children: Reac
     <button
       onClick={onClick}
       className={`inline-flex items-center gap-2 px-4 py-2 rounded-[0.875rem] text-sm font-medium
-        border border-[hsl(30,35%,88%)] text-[hsl(20,40%,15%)] bg-[hsl(30,35%,92%)]
-        hover:bg-[hsl(30,35%,88%)] transition-all ${className}`}
+        border border-[hsl(250,20%,88%)] text-[hsl(250,25%,18%)] bg-[hsl(250,20%,92%)]
+        hover:bg-[hsl(250,20%,88%)] transition-all ${className}`}
     >
       {children}
     </button>
@@ -165,7 +165,7 @@ function InlineMessage({ type, message }: { type: 'success' | 'error' | 'info' |
     success: 'bg-green-50 text-green-700 border-green-200',
     error: 'bg-red-50 text-red-700 border-red-200',
     info: 'bg-blue-50 text-blue-700 border-blue-200',
-    loading: 'bg-[hsl(24,95%,53%)]/5 text-[hsl(24,95%,53%)] border-[hsl(24,95%,53%)]/20',
+    loading: 'bg-[hsl(262,83%,58%)]/5 text-[hsl(262,83%,58%)] border-[hsl(262,83%,58%)]/20',
   }
   const icons: Record<string, React.ReactNode> = {
     success: <FiCheck size={16} />,
@@ -184,9 +184,9 @@ function InlineMessage({ type, message }: { type: 'success' | 'error' | 'info' |
 function SkeletonCard() {
   return (
     <GlassCard className="p-4 animate-pulse">
-      <div className="h-4 bg-[hsl(30,30%,90%)] rounded w-3/4 mb-3" />
-      <div className="h-3 bg-[hsl(30,30%,90%)] rounded w-full mb-2" />
-      <div className="h-3 bg-[hsl(30,30%,90%)] rounded w-5/6" />
+      <div className="h-4 bg-[hsl(250,18%,90%)] rounded w-3/4 mb-3" />
+      <div className="h-3 bg-[hsl(250,18%,90%)] rounded w-full mb-2" />
+      <div className="h-3 bg-[hsl(250,18%,90%)] rounded w-5/6" />
     </GlassCard>
   )
 }
@@ -196,11 +196,11 @@ function EmptyState({ icon, title, description, action, onAction }: {
 }) {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
-      <div className="w-16 h-16 rounded-full bg-[hsl(30,30%,90%)] flex items-center justify-center mb-4 text-[hsl(20,25%,45%)]">
+      <div className="w-16 h-16 rounded-full bg-[hsl(250,18%,90%)] flex items-center justify-center mb-4 text-[hsl(250,15%,50%)]">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold text-[hsl(20,40%,10%)] mb-1">{title}</h3>
-      <p className="text-sm text-[hsl(20,25%,45%)] max-w-sm mb-4">{description}</p>
+      <h3 className="text-lg font-semibold text-[hsl(250,30%,12%)] mb-1">{title}</h3>
+      <p className="text-sm text-[hsl(250,15%,50%)] max-w-sm mb-4">{description}</p>
       {action && onAction && <PrimaryButton onClick={onAction}>{action}</PrimaryButton>}
     </div>
   )
@@ -218,10 +218,10 @@ function Sidebar({ active, onNavigate, appName, appTagline }: { active: Screen; 
     { id: 'settings', label: 'Settings', icon: <FiSettings size={18} /> },
   ]
   return (
-    <aside className="w-60 min-h-screen bg-[hsl(30,38%,95%)] border-r border-[hsl(30,35%,88%)] flex flex-col shrink-0">
-      <div className="px-5 py-5 border-b border-[hsl(30,35%,88%)]">
-        <h1 className="text-xl font-bold tracking-[-0.01em] text-[hsl(20,40%,10%)] font-serif">{appName}</h1>
-        <p className="text-xs text-[hsl(20,25%,45%)] mt-0.5">{appTagline}</p>
+    <aside className="w-60 min-h-screen bg-[hsl(250,22%,95%)] border-r border-[hsl(250,20%,88%)] flex flex-col shrink-0">
+      <div className="px-5 py-5 border-b border-[hsl(250,20%,88%)]">
+        <h1 className="text-xl font-bold tracking-[-0.01em] text-[hsl(250,30%,12%)] font-serif">{appName}</h1>
+        <p className="text-xs text-[hsl(250,15%,50%)] mt-0.5">{appTagline}</p>
       </div>
       <nav className="flex-1 py-3 px-3 space-y-0.5">
         {items.map((item) => (
@@ -230,8 +230,8 @@ function Sidebar({ active, onNavigate, appName, appTagline }: { active: Screen; 
             onClick={() => onNavigate(item.id)}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-[0.875rem] text-sm font-medium transition-all
               ${active === item.id
-                ? 'bg-[hsl(24,95%,53%)] text-white shadow-md'
-                : 'text-[hsl(20,40%,10%)] hover:bg-[hsl(30,35%,90%)]'
+                ? 'bg-[hsl(262,83%,58%)] text-white shadow-md'
+                : 'text-[hsl(250,30%,12%)] hover:bg-[hsl(250,20%,90%)]'
               }`}
           >
             {item.icon}
@@ -239,8 +239,8 @@ function Sidebar({ active, onNavigate, appName, appTagline }: { active: Screen; 
           </button>
         ))}
       </nav>
-      <div className="px-4 py-4 border-t border-[hsl(30,35%,88%)]">
-        <p className="text-[10px] text-[hsl(20,25%,45%)]">Powered by AI Agents</p>
+      <div className="px-4 py-4 border-t border-[hsl(250,20%,88%)]">
+        <p className="text-[10px] text-[hsl(250,15%,50%)]">Powered by AI Agents</p>
       </div>
     </aside>
   )
@@ -270,8 +270,8 @@ function DashboardScreen({ onNavigate, contentBank, calendarItems }: {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Dashboard</h2>
-          <p className="text-sm text-[hsl(20,25%,45%)]">Campaign overview and quick actions</p>
+          <h2 className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em] font-serif">Dashboard</h2>
+          <p className="text-sm text-[hsl(250,15%,50%)]">Campaign overview and quick actions</p>
         </div>
       </div>
 
@@ -280,14 +280,14 @@ function DashboardScreen({ onNavigate, contentBank, calendarItems }: {
         {kpis.map((kpi) => (
           <GlassCard key={kpi.label} className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[hsl(20,25%,45%)]">{kpi.icon}</span>
+              <span className="text-[hsl(250,15%,50%)]">{kpi.icon}</span>
               <span className={`flex items-center gap-1 text-xs font-medium ${kpi.up ? 'text-green-600' : 'text-red-500'}`}>
                 {kpi.up ? <FiTrendingUp size={12} /> : <FiTrendingDown size={12} />}
                 {kpi.trend}
               </span>
             </div>
-            <p className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em]">{kpi.value}</p>
-            <p className="text-xs text-[hsl(20,25%,45%)] mt-1">{kpi.label}</p>
+            <p className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em]">{kpi.value}</p>
+            <p className="text-xs text-[hsl(250,15%,50%)] mt-1">{kpi.label}</p>
           </GlassCard>
         ))}
       </div>
@@ -295,7 +295,7 @@ function DashboardScreen({ onNavigate, contentBank, calendarItems }: {
       {/* Quick Actions + Recent Activity */}
       <div className="grid grid-cols-2 gap-6">
         <GlassCard className="p-5">
-          <h3 className="text-base font-semibold text-[hsl(20,40%,10%)] mb-4">Quick Actions</h3>
+          <h3 className="text-base font-semibold text-[hsl(250,30%,12%)] mb-4">Quick Actions</h3>
           <div className="space-y-3">
             <PrimaryButton onClick={() => onNavigate('generator')} className="w-full justify-center">
               <FiZap size={16} /> Generate Campaign Content
@@ -310,14 +310,14 @@ function DashboardScreen({ onNavigate, contentBank, calendarItems }: {
         </GlassCard>
 
         <GlassCard className="p-5">
-          <h3 className="text-base font-semibold text-[hsl(20,40%,10%)] mb-4">Recent Activity</h3>
+          <h3 className="text-base font-semibold text-[hsl(250,30%,12%)] mb-4">Recent Activity</h3>
           <div className="space-y-3">
             {recentActivity.map((a, i) => (
               <div key={i} className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-1.5 rounded-full bg-[hsl(24,95%,53%)] shrink-0" />
+                <div className="w-2 h-2 mt-1.5 rounded-full bg-[hsl(262,83%,58%)] shrink-0" />
                 <div>
-                  <p className="text-sm text-[hsl(20,40%,10%)] leading-snug">{a.text}</p>
-                  <p className="text-xs text-[hsl(20,25%,45%)] mt-0.5">{a.time}</p>
+                  <p className="text-sm text-[hsl(250,30%,12%)] leading-snug">{a.text}</p>
+                  <p className="text-xs text-[hsl(250,15%,50%)] mt-0.5">{a.time}</p>
                 </div>
               </div>
             ))}
@@ -329,12 +329,12 @@ function DashboardScreen({ onNavigate, contentBank, calendarItems }: {
       {contentBank.length > 0 && (
         <GlassCard className="p-5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-base font-semibold text-[hsl(20,40%,10%)]">Content Bank</h3>
+            <h3 className="text-base font-semibold text-[hsl(250,30%,12%)]">Content Bank</h3>
             <SecondaryButton onClick={() => onNavigate('content-bank')}>
               View All <FiChevronRight size={14} />
             </SecondaryButton>
           </div>
-          <p className="text-sm text-[hsl(20,25%,45%)]">{contentBank.length} content pieces generated</p>
+          <p className="text-sm text-[hsl(250,15%,50%)]">{contentBank.length} content pieces generated</p>
         </GlassCard>
       )}
     </div>
@@ -402,8 +402,8 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Content Generator</h2>
-        <p className="text-sm text-[hsl(20,25%,45%)]">Configure and generate AI-powered campaign content</p>
+        <h2 className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em] font-serif">Content Generator</h2>
+        <p className="text-sm text-[hsl(250,15%,50%)]">Configure and generate AI-powered campaign content</p>
       </div>
 
       <div className="grid grid-cols-5 gap-6">
@@ -412,11 +412,11 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
           <GlassCard className="p-5 space-y-4">
             {/* Product */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Product / Offer</label>
+              <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">Product / Offer</label>
               <select
                 value={product}
                 onChange={e => setProduct(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(24,95%,53%)] focus:border-transparent outline-none"
+                className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(250,20%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(262,83%,58%)] focus:border-transparent outline-none"
               >
                 <option value="">Select a product...</option>
                 {PRODUCTS.map(p => <option key={p} value={p}>{p}</option>)}
@@ -425,7 +425,7 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
 
             {/* Platforms */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Target Platforms</label>
+              <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">Target Platforms</label>
               <div className="flex flex-wrap gap-2">
                 {PLATFORMS.map(p => {
                   const Icon = p.icon
@@ -436,8 +436,8 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
                       onClick={() => togglePlatform(p.id)}
                       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all
                         ${selected
-                          ? 'bg-[hsl(24,95%,53%)] text-white border-[hsl(24,95%,53%)]'
-                          : 'bg-white text-[hsl(20,40%,15%)] border-[hsl(30,35%,88%)] hover:border-[hsl(24,95%,53%)]'
+                          ? 'bg-[hsl(262,83%,58%)] text-white border-[hsl(262,83%,58%)]'
+                          : 'bg-white text-[hsl(250,25%,18%)] border-[hsl(250,20%,88%)] hover:border-[hsl(262,83%,58%)]'
                         }`}
                     >
                       <Icon size={13} /> {p.label}
@@ -449,19 +449,19 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
 
             {/* Brief */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Campaign Brief</label>
+              <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">Campaign Brief</label>
               <textarea
                 value={brief}
                 onChange={e => setBrief(e.target.value)}
                 rows={4}
                 placeholder="Describe your target audience, goals, tone preferences..."
-                className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm resize-none focus:ring-2 focus:ring-[hsl(24,95%,53%)] focus:border-transparent outline-none"
+                className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(250,20%,88%)] bg-white text-sm resize-none focus:ring-2 focus:ring-[hsl(262,83%,58%)] focus:border-transparent outline-none"
               />
             </div>
 
             {/* Content Types */}
             <div>
-              <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Content Types</label>
+              <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">Content Types</label>
               <div className="flex flex-wrap gap-2">
                 {[
                   { id: 'ads', label: 'Ads' },
@@ -475,9 +475,9 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
                       type="checkbox"
                       checked={contentTypes.includes(ct.id)}
                       onChange={() => toggleContentType(ct.id)}
-                      className="rounded border-[hsl(30,35%,88%)] text-[hsl(24,95%,53%)] focus:ring-[hsl(24,95%,53%)]"
+                      className="rounded border-[hsl(250,20%,88%)] text-[hsl(262,83%,58%)] focus:ring-[hsl(262,83%,58%)]"
                     />
-                    <span className="text-sm text-[hsl(20,40%,10%)]">{ct.label}</span>
+                    <span className="text-sm text-[hsl(250,30%,12%)]">{ct.label}</span>
                   </label>
                 ))}
               </div>
@@ -495,7 +495,7 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
 
           {loading && (
             <GlassCard className="p-5">
-              <h3 className="text-sm font-semibold text-[hsl(20,40%,10%)] mb-4">Generation Progress</h3>
+              <h3 className="text-sm font-semibold text-[hsl(250,30%,12%)] mb-4">Generation Progress</h3>
               <div className="space-y-3">
                 {['Analyzing campaign brief', 'Generating ad copy & hooks', 'Creating email sequences', 'Producing social posts', 'Aggregating results'].map((step, i) => {
                   const stepStatus = progress.toLowerCase().includes(step.split(' ')[0].toLowerCase()) ? 'active'
@@ -503,14 +503,14 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
                   return (
                     <div key={i} className="flex items-center gap-3">
                       <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
-                        stepStatus === 'active' ? 'bg-[hsl(24,95%,53%)] text-white' :
-                        stepStatus === 'done' ? 'bg-green-500 text-white' : 'bg-[hsl(30,30%,90%)] text-[hsl(20,25%,45%)]'
+                        stepStatus === 'active' ? 'bg-[hsl(262,83%,58%)] text-white' :
+                        stepStatus === 'done' ? 'bg-green-500 text-white' : 'bg-[hsl(250,18%,90%)] text-[hsl(250,15%,50%)]'
                       }`}>
                         {stepStatus === 'active' ? <FiLoader size={12} className="animate-spin" /> :
                          stepStatus === 'done' ? <FiCheck size={12} /> :
                          <span className="text-[10px]">{i + 1}</span>}
                       </div>
-                      <span className={`text-sm ${stepStatus === 'active' ? 'text-[hsl(24,95%,53%)] font-medium' : 'text-[hsl(20,25%,45%)]'}`}>{step}</span>
+                      <span className={`text-sm ${stepStatus === 'active' ? 'text-[hsl(262,83%,58%)] font-medium' : 'text-[hsl(250,15%,50%)]'}`}>{step}</span>
                     </div>
                   )
                 })}
@@ -521,8 +521,8 @@ Generate platform-specific ad copy, hooks, email sequences, social posts, and sc
           {!loading && !statusMsg && (
             <GlassCard className="p-5">
               <div className="text-center py-8">
-                <FiEdit3 size={32} className="mx-auto text-[hsl(20,25%,45%)] mb-3" />
-                <p className="text-sm text-[hsl(20,25%,45%)]">Configure your campaign and click generate to create content</p>
+                <FiEdit3 size={32} className="mx-auto text-[hsl(250,15%,50%)] mb-3" />
+                <p className="text-sm text-[hsl(250,15%,50%)]">Configure your campaign and click generate to create content</p>
               </div>
             </GlassCard>
           )}
@@ -596,15 +596,15 @@ Create an attention-grabbing, professional image that complements this marketing
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Content Bank</h2>
-          <p className="text-sm text-[hsl(20,25%,45%)]">Review, edit, and manage generated content</p>
+          <h2 className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em] font-serif">Content Bank</h2>
+          <p className="text-sm text-[hsl(250,15%,50%)]">Review, edit, and manage generated content</p>
         </div>
       </div>
 
       {imageMsg && <InlineMessage type={imageMsg.type} message={imageMsg.message} />}
 
       {/* Tabs */}
-      <div className="flex items-center gap-1 border-b border-[hsl(30,35%,88%)]">
+      <div className="flex items-center gap-1 border-b border-[hsl(250,20%,88%)]">
         {tabs.map(tab => {
           const count = contentBank.filter(i => i.type === tab.id).length
           return (
@@ -613,14 +613,14 @@ Create an attention-grabbing, professional image that complements this marketing
               onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors flex items-center gap-2
                 ${activeTab === tab.id
-                  ? 'border-[hsl(24,95%,53%)] text-[hsl(24,95%,53%)]'
-                  : 'border-transparent text-[hsl(20,25%,45%)] hover:text-[hsl(20,40%,10%)]'
+                  ? 'border-[hsl(262,83%,58%)] text-[hsl(262,83%,58%)]'
+                  : 'border-transparent text-[hsl(250,15%,50%)] hover:text-[hsl(250,30%,12%)]'
                 }`}
             >
               {tab.label}
               {count > 0 && (
                 <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-semibold
-                  ${activeTab === tab.id ? 'bg-[hsl(24,95%,53%)] text-white' : 'bg-[hsl(30,30%,90%)] text-[hsl(20,25%,45%)]'}`}>
+                  ${activeTab === tab.id ? 'bg-[hsl(262,83%,58%)] text-white' : 'bg-[hsl(250,18%,90%)] text-[hsl(250,15%,50%)]'}`}>
                   {count}
                 </span>
               )}
@@ -631,12 +631,12 @@ Create an attention-grabbing, professional image that complements this marketing
 
       {/* Search */}
       <div className="relative">
-        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[hsl(20,25%,45%)]" size={16} />
+        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[hsl(250,15%,50%)]" size={16} />
         <input
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder="Search content..."
-          className="w-full pl-10 pr-4 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(24,95%,53%)] outline-none"
+          className="w-full pl-10 pr-4 py-2.5 rounded-[0.875rem] border border-[hsl(250,20%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(262,83%,58%)] outline-none"
         />
       </div>
 
@@ -654,13 +654,13 @@ Create an attention-grabbing, professional image that complements this marketing
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
                   {item.platform && getPlatformIcon(item.platform)}
-                  <h4 className="text-sm font-semibold text-[hsl(20,40%,10%)] truncate max-w-[200px]">{item.title}</h4>
+                  <h4 className="text-sm font-semibold text-[hsl(250,30%,12%)] truncate max-w-[200px]">{item.title}</h4>
                 </div>
                 <StatusBadge status={item.status} />
               </div>
-              <p className="text-xs text-[hsl(20,25%,45%)] leading-relaxed mb-3 line-clamp-3">{item.content}</p>
+              <p className="text-xs text-[hsl(250,15%,50%)] leading-relaxed mb-3 line-clamp-3">{item.content}</p>
               {item.imageUrl && (
-                <div className="mb-3 rounded-lg overflow-hidden border border-[hsl(30,35%,88%)]">
+                <div className="mb-3 rounded-lg overflow-hidden border border-[hsl(250,20%,88%)]">
                   <img src={item.imageUrl} alt="" className="w-full h-32 object-cover" />
                 </div>
               )}
@@ -668,7 +668,7 @@ Create an attention-grabbing, professional image that complements this marketing
                 <button
                   onClick={() => handleGenerateImage(item)}
                   disabled={imageLoading === item.id}
-                  className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-lg bg-[hsl(30,35%,92%)] text-[hsl(20,40%,15%)] hover:bg-[hsl(30,35%,88%)] transition-colors disabled:opacity-50"
+                  className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-lg bg-[hsl(250,20%,92%)] text-[hsl(250,25%,18%)] hover:bg-[hsl(250,20%,88%)] transition-colors disabled:opacity-50"
                 >
                   {imageLoading === item.id ? <FiLoader size={12} className="animate-spin" /> : <FiImage size={12} />}
                   Generate Image
@@ -687,7 +687,7 @@ Create an attention-grabbing, professional image that complements this marketing
                 </button>
                 <button
                   onClick={() => { navigator.clipboard.writeText(item.content) }}
-                  className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-lg bg-[hsl(30,35%,92%)] text-[hsl(20,40%,15%)] hover:bg-[hsl(30,35%,88%)] transition-colors"
+                  className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-lg bg-[hsl(250,20%,92%)] text-[hsl(250,25%,18%)] hover:bg-[hsl(250,20%,88%)] transition-colors"
                 >
                   <FiCopy size={12} />
                 </button>
@@ -774,12 +774,12 @@ Add link tracking and optimize for the selected platform.`
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Content Calendar</h2>
-          <p className="text-sm text-[hsl(20,25%,45%)]">Schedule and distribute content across platforms</p>
+          <h2 className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em] font-serif">Content Calendar</h2>
+          <p className="text-sm text-[hsl(250,15%,50%)]">Schedule and distribute content across platforms</p>
         </div>
         <div className="flex items-center gap-2">
-          <SecondaryButton onClick={() => setView('week')} className={view === 'week' ? '!bg-[hsl(24,95%,53%)] !text-white !border-[hsl(24,95%,53%)]' : ''}>Week</SecondaryButton>
-          <SecondaryButton onClick={() => setView('month')} className={view === 'month' ? '!bg-[hsl(24,95%,53%)] !text-white !border-[hsl(24,95%,53%)]' : ''}>Month</SecondaryButton>
+          <SecondaryButton onClick={() => setView('week')} className={view === 'week' ? '!bg-[hsl(262,83%,58%)] !text-white !border-[hsl(262,83%,58%)]' : ''}>Week</SecondaryButton>
+          <SecondaryButton onClick={() => setView('month')} className={view === 'month' ? '!bg-[hsl(262,83%,58%)] !text-white !border-[hsl(262,83%,58%)]' : ''}>Month</SecondaryButton>
         </div>
       </div>
 
@@ -791,20 +791,20 @@ Add link tracking and optimize for the selected platform.`
           <GlassCard className="p-4">
             <div className="grid grid-cols-7 gap-2">
               {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                <div key={day} className="text-center text-xs font-medium text-[hsl(20,25%,45%)] py-2">{day}</div>
+                <div key={day} className="text-center text-xs font-medium text-[hsl(250,15%,50%)] py-2">{day}</div>
               ))}
               {weekDays.map((date, i) => {
                 const dateStr = date.toISOString().split('T')[0]
                 const dayEvents = calendarItems.filter(e => e.date.startsWith(dateStr))
                 const isToday = dateStr === today.toISOString().split('T')[0]
                 return (
-                  <div key={i} className={`min-h-[100px] rounded-lg border p-2 ${isToday ? 'border-[hsl(24,95%,53%)] bg-[hsl(24,95%,53%)]/5' : 'border-[hsl(30,35%,88%)]'}`}>
-                    <span className={`text-xs font-medium ${isToday ? 'text-[hsl(24,95%,53%)]' : 'text-[hsl(20,25%,45%)]'}`}>
+                  <div key={i} className={`min-h-[100px] rounded-lg border p-2 ${isToday ? 'border-[hsl(262,83%,58%)] bg-[hsl(262,83%,58%)]/5' : 'border-[hsl(250,20%,88%)]'}`}>
+                    <span className={`text-xs font-medium ${isToday ? 'text-[hsl(262,83%,58%)]' : 'text-[hsl(250,15%,50%)]'}`}>
                       {date.getDate()}
                     </span>
                     <div className="mt-1 space-y-1">
                       {dayEvents.map(ev => (
-                        <div key={ev.id} className="text-[10px] px-1.5 py-0.5 rounded bg-[hsl(24,95%,53%)]/10 text-[hsl(24,95%,53%)] truncate flex items-center gap-1">
+                        <div key={ev.id} className="text-[10px] px-1.5 py-0.5 rounded bg-[hsl(262,83%,58%)]/10 text-[hsl(262,83%,58%)] truncate flex items-center gap-1">
                           {getPlatformIcon(ev.platform)}
                           <span className="truncate">{ev.content.substring(0, 20)}</span>
                         </div>
@@ -820,25 +820,25 @@ Add link tracking and optimize for the selected platform.`
         {/* Sidebar - Schedule Form */}
         <div className="space-y-4">
           <GlassCard className="p-4 space-y-3">
-            <h3 className="text-sm font-semibold text-[hsl(20,40%,10%)]">Schedule Post</h3>
+            <h3 className="text-sm font-semibold text-[hsl(250,30%,12%)]">Schedule Post</h3>
             <div>
-              <label className="block text-xs font-medium text-[hsl(20,25%,45%)] mb-1">Platform</label>
+              <label className="block text-xs font-medium text-[hsl(250,15%,50%)] mb-1">Platform</label>
               <select value={selectedPlatform} onChange={e => setSelectedPlatform(e.target.value)}
-                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(30,35%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(24,95%,53%)]">
+                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(250,20%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(262,83%,58%)]">
                 <option value="">Select...</option>
                 {PLATFORMS.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium text-[hsl(20,25%,45%)] mb-1">Post Content</label>
+              <label className="block text-xs font-medium text-[hsl(250,15%,50%)] mb-1">Post Content</label>
               <textarea value={postContent} onChange={e => setPostContent(e.target.value)} rows={3}
                 placeholder="Enter post content..."
-                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(30,35%,88%)] bg-white text-xs resize-none outline-none focus:ring-2 focus:ring-[hsl(24,95%,53%)]" />
+                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(250,20%,88%)] bg-white text-xs resize-none outline-none focus:ring-2 focus:ring-[hsl(262,83%,58%)]" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[hsl(20,25%,45%)] mb-1">Schedule Time</label>
+              <label className="block text-xs font-medium text-[hsl(250,15%,50%)] mb-1">Schedule Time</label>
               <input type="datetime-local" value={scheduleTime} onChange={e => setScheduleTime(e.target.value)}
-                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(30,35%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(24,95%,53%)]" />
+                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(250,20%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(262,83%,58%)]" />
             </div>
             <PrimaryButton onClick={() => handleDistribute(false)} loading={loading} disabled={loading} className="w-full justify-center text-xs">
               <FiSend size={13} /> Schedule & Distribute
@@ -847,7 +847,7 @@ Add link tracking and optimize for the selected platform.`
               onClick={() => handleDistribute(true)}
               disabled={loading}
               className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-[0.875rem] text-xs font-semibold
-                bg-[hsl(12,80%,50%)] text-white hover:bg-[hsl(12,80%,45%)] transition-all disabled:opacity-50 shadow-md"
+                bg-[hsl(174,72%,40%)] text-white hover:bg-[hsl(174,72%,35%)] transition-all disabled:opacity-50 shadow-md"
             >
               <FiZap size={13} /> Rocket Post
             </button>
@@ -855,15 +855,15 @@ Add link tracking and optimize for the selected platform.`
 
           {/* Queue */}
           <GlassCard className="p-4">
-            <h3 className="text-sm font-semibold text-[hsl(20,40%,10%)] mb-3">Approved Queue ({approvedContent.length})</h3>
+            <h3 className="text-sm font-semibold text-[hsl(250,30%,12%)] mb-3">Approved Queue ({approvedContent.length})</h3>
             {approvedContent.length === 0 ? (
-              <p className="text-xs text-[hsl(20,25%,45%)]">Approve content in the Content Bank to queue it</p>
+              <p className="text-xs text-[hsl(250,15%,50%)]">Approve content in the Content Bank to queue it</p>
             ) : (
               <div className="space-y-2 max-h-60 overflow-y-auto">
                 {approvedContent.slice(0, 5).map(item => (
-                  <div key={item.id} className="flex items-center gap-2 p-2 rounded-lg bg-white border border-[hsl(30,35%,88%)]">
+                  <div key={item.id} className="flex items-center gap-2 p-2 rounded-lg bg-white border border-[hsl(250,20%,88%)]">
                     {item.platform && getPlatformIcon(item.platform)}
-                    <span className="text-[11px] text-[hsl(20,40%,10%)] truncate">{item.title}</span>
+                    <span className="text-[11px] text-[hsl(250,30%,12%)] truncate">{item.title}</span>
                   </div>
                 ))}
               </div>
@@ -928,8 +928,8 @@ Send the first email in this sequence via Gmail and set up the automation flow.`
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Email Automation</h2>
-        <p className="text-sm text-[hsl(20,25%,45%)]">Configure and manage email nurture sequences</p>
+        <h2 className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em] font-serif">Email Automation</h2>
+        <p className="text-sm text-[hsl(250,15%,50%)]">Configure and manage email nurture sequences</p>
       </div>
 
       {statusMsg && <InlineMessage type={statusMsg.type} message={statusMsg.message} />}
@@ -938,24 +938,24 @@ Send the first email in this sequence via Gmail and set up the automation flow.`
         {/* Sequence Cards */}
         <div className="col-span-3 space-y-3">
           {sequences.map(seq => (
-            <GlassCard key={seq.type} className={`p-4 transition-all ${sequenceType === seq.type ? 'ring-2 ring-[hsl(24,95%,53%)]' : ''}`}
+            <GlassCard key={seq.type} className={`p-4 transition-all ${sequenceType === seq.type ? 'ring-2 ring-[hsl(262,83%,58%)]' : ''}`}
               onClick={() => setSequenceType(seq.type)}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                    activeSequences[seq.type] ? 'bg-green-100 text-green-600' : 'bg-[hsl(30,30%,90%)] text-[hsl(20,25%,45%)]'
+                    activeSequences[seq.type] ? 'bg-green-100 text-green-600' : 'bg-[hsl(250,18%,90%)] text-[hsl(250,15%,50%)]'
                   }`}>
                     <FiMail size={18} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-[hsl(20,40%,10%)]">{seq.label}</h4>
-                    <p className="text-xs text-[hsl(20,25%,45%)]">{seq.desc}</p>
+                    <h4 className="text-sm font-semibold text-[hsl(250,30%,12%)]">{seq.label}</h4>
+                    <p className="text-xs text-[hsl(250,15%,50%)]">{seq.desc}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right">
-                    <p className="text-xs text-[hsl(20,25%,45%)]">{seq.emails} emails</p>
-                    <p className="text-xs text-[hsl(20,25%,45%)]">{seq.subscribers} subscribers</p>
+                    <p className="text-xs text-[hsl(250,15%,50%)]">{seq.emails} emails</p>
+                    <p className="text-xs text-[hsl(250,15%,50%)]">{seq.subscribers} subscribers</p>
                   </div>
                   <StatusBadge status={activeSequences[seq.type] ? 'active' : 'paused'} />
                 </div>
@@ -965,10 +965,10 @@ Send the first email in this sequence via Gmail and set up the automation flow.`
                 {Array.from({ length: seq.emails }, (_, i) => (
                   <div key={i} className="flex items-center">
                     <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold
-                      ${activeSequences[seq.type] ? 'bg-[hsl(24,95%,53%)] text-white' : 'bg-[hsl(30,30%,90%)] text-[hsl(20,25%,45%)]'}`}>
+                      ${activeSequences[seq.type] ? 'bg-[hsl(262,83%,58%)] text-white' : 'bg-[hsl(250,18%,90%)] text-[hsl(250,15%,50%)]'}`}>
                       {i + 1}
                     </div>
-                    {i < seq.emails - 1 && <div className={`w-4 h-0.5 ${activeSequences[seq.type] ? 'bg-[hsl(24,95%,53%)]' : 'bg-[hsl(30,30%,90%)]'}`} />}
+                    {i < seq.emails - 1 && <div className={`w-4 h-0.5 ${activeSequences[seq.type] ? 'bg-[hsl(262,83%,58%)]' : 'bg-[hsl(250,18%,90%)]'}`} />}
                   </div>
                 ))}
               </div>
@@ -979,31 +979,31 @@ Send the first email in this sequence via Gmail and set up the automation flow.`
         {/* Activation Form */}
         <div className="col-span-2 space-y-4">
           <GlassCard className="p-4 space-y-3">
-            <h3 className="text-sm font-semibold text-[hsl(20,40%,10%)]">Activate Sequence</h3>
+            <h3 className="text-sm font-semibold text-[hsl(250,30%,12%)]">Activate Sequence</h3>
             <div>
-              <label className="block text-xs font-medium text-[hsl(20,25%,45%)] mb-1">Sequence Type</label>
+              <label className="block text-xs font-medium text-[hsl(250,15%,50%)] mb-1">Sequence Type</label>
               <select value={sequenceType} onChange={e => setSequenceType(e.target.value)}
-                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(30,35%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(24,95%,53%)]">
+                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(250,20%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(262,83%,58%)]">
                 {SEQUENCE_TYPES.map(s => <option key={s} value={s}>{s.replace(/_/g, ' ')}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium text-[hsl(20,25%,45%)] mb-1">Recipient Email</label>
+              <label className="block text-xs font-medium text-[hsl(250,15%,50%)] mb-1">Recipient Email</label>
               <input type="email" value={recipientEmail} onChange={e => setRecipientEmail(e.target.value)}
                 placeholder="lead@example.com"
-                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(30,35%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(24,95%,53%)]" />
+                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(250,20%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(262,83%,58%)]" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[hsl(20,25%,45%)] mb-1">Subject Line</label>
+              <label className="block text-xs font-medium text-[hsl(250,15%,50%)] mb-1">Subject Line</label>
               <input type="text" value={subject} onChange={e => setSubject(e.target.value)}
                 placeholder="Welcome to your journey..."
-                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(30,35%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(24,95%,53%)]" />
+                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(250,20%,88%)] bg-white text-xs outline-none focus:ring-2 focus:ring-[hsl(262,83%,58%)]" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[hsl(20,25%,45%)] mb-1">Email Body</label>
+              <label className="block text-xs font-medium text-[hsl(250,15%,50%)] mb-1">Email Body</label>
               <textarea value={emailBody} onChange={e => setEmailBody(e.target.value)} rows={4}
                 placeholder="Enter the email content..."
-                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(30,35%,88%)] bg-white text-xs resize-none outline-none focus:ring-2 focus:ring-[hsl(24,95%,53%)]" />
+                className="w-full px-2.5 py-2 rounded-lg border border-[hsl(250,20%,88%)] bg-white text-xs resize-none outline-none focus:ring-2 focus:ring-[hsl(262,83%,58%)]" />
             </div>
             <PrimaryButton onClick={handleActivate} loading={loading} disabled={loading} className="w-full justify-center text-xs">
               <FiSend size={13} /> Activate Sequence
@@ -1013,23 +1013,23 @@ Send the first email in this sequence via Gmail and set up the automation flow.`
           {/* Result Summary */}
           {lastResult && (
             <GlassCard className="p-4">
-              <h3 className="text-sm font-semibold text-[hsl(20,40%,10%)] mb-2">Last Activation</h3>
+              <h3 className="text-sm font-semibold text-[hsl(250,30%,12%)] mb-2">Last Activation</h3>
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs">
-                  <span className="text-[hsl(20,25%,45%)]">Status</span>
+                  <span className="text-[hsl(250,15%,50%)]">Status</span>
                   <StatusBadge status={lastResult.status || 'active'} />
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-[hsl(20,25%,45%)]">Sequence</span>
-                  <span className="text-[hsl(20,40%,10%)] font-medium">{lastResult.sequence_type || sequenceType}</span>
+                  <span className="text-[hsl(250,15%,50%)]">Sequence</span>
+                  <span className="text-[hsl(250,30%,12%)] font-medium">{lastResult.sequence_type || sequenceType}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-[hsl(20,25%,45%)]">Emails Queued</span>
-                  <span className="text-[hsl(20,40%,10%)] font-medium">{lastResult.emails_queued || 0}</span>
+                  <span className="text-[hsl(250,15%,50%)]">Emails Queued</span>
+                  <span className="text-[hsl(250,30%,12%)] font-medium">{lastResult.emails_queued || 0}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-[hsl(20,25%,45%)]">Next Email</span>
-                  <span className="text-[hsl(20,40%,10%)] font-medium">{lastResult.next_email_time || 'Pending'}</span>
+                  <span className="text-[hsl(250,15%,50%)]">Next Email</span>
+                  <span className="text-[hsl(250,30%,12%)] font-medium">{lastResult.next_email_time || 'Pending'}</span>
                 </div>
               </div>
             </GlassCard>
@@ -1037,16 +1037,16 @@ Send the first email in this sequence via Gmail and set up the automation flow.`
 
           {/* Performance Mini Cards */}
           <GlassCard className="p-4">
-            <h3 className="text-sm font-semibold text-[hsl(20,40%,10%)] mb-3">Email Performance</h3>
+            <h3 className="text-sm font-semibold text-[hsl(250,30%,12%)] mb-3">Email Performance</h3>
             <div className="grid grid-cols-3 gap-2">
               {[
                 { label: 'Open Rate', value: '42.3%' },
                 { label: 'Click Rate', value: '8.7%' },
                 { label: 'Unsub Rate', value: '0.4%' },
               ].map(m => (
-                <div key={m.label} className="text-center p-2 rounded-lg bg-white border border-[hsl(30,35%,88%)]">
-                  <p className="text-sm font-bold text-[hsl(20,40%,10%)]">{m.value}</p>
-                  <p className="text-[10px] text-[hsl(20,25%,45%)]">{m.label}</p>
+                <div key={m.label} className="text-center p-2 rounded-lg bg-white border border-[hsl(250,20%,88%)]">
+                  <p className="text-sm font-bold text-[hsl(250,30%,12%)]">{m.value}</p>
+                  <p className="text-[10px] text-[hsl(250,15%,50%)]">{m.label}</p>
                 </div>
               ))}
             </div>
@@ -1120,8 +1120,8 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Analytics Dashboard</h2>
-          <p className="text-sm text-[hsl(20,25%,45%)]">Performance tracking, A/B testing, and AI optimization</p>
+          <h2 className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em] font-serif">Analytics Dashboard</h2>
+          <p className="text-sm text-[hsl(250,15%,50%)]">Performance tracking, A/B testing, and AI optimization</p>
         </div>
         <PrimaryButton onClick={handleAnalyze} loading={loading} disabled={loading}>
           <FiBarChart2 size={16} /> Analyze Performance
@@ -1132,13 +1132,13 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
 
       {/* Input area */}
       <GlassCard className="p-4">
-        <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Campaign Metrics (optional - defaults provided)</label>
+        <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">Campaign Metrics (optional - defaults provided)</label>
         <textarea
           value={metricsInput}
           onChange={e => setMetricsInput(e.target.value)}
           rows={3}
           placeholder="Paste your campaign metrics here, or leave blank to use sample data..."
-          className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm resize-none focus:ring-2 focus:ring-[hsl(24,95%,53%)] outline-none"
+          className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(250,20%,88%)] bg-white text-sm resize-none focus:ring-2 focus:ring-[hsl(262,83%,58%)] outline-none"
         />
       </GlassCard>
 
@@ -1153,20 +1153,20 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
           {/* Performance Summary */}
           {analyticsData.performance_summary && (
             <GlassCard className="p-5">
-              <h3 className="text-base font-semibold text-[hsl(20,40%,10%)] mb-2">Performance Summary</h3>
-              <p className="text-sm text-[hsl(20,25%,45%)] leading-relaxed">{analyticsData.performance_summary}</p>
+              <h3 className="text-base font-semibold text-[hsl(250,30%,12%)] mb-2">Performance Summary</h3>
+              <p className="text-sm text-[hsl(250,15%,50%)] leading-relaxed">{analyticsData.performance_summary}</p>
             </GlassCard>
           )}
 
           {/* KPI Cards */}
           {kpis.length > 0 && (
             <div>
-              <h3 className="text-base font-semibold text-[hsl(20,40%,10%)] mb-3">Key Metrics</h3>
+              <h3 className="text-base font-semibold text-[hsl(250,30%,12%)] mb-3">Key Metrics</h3>
               <div className="grid grid-cols-3 gap-4">
                 {kpis.map((kpi, i) => (
                   <GlassCard key={i} className="p-4">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-medium text-[hsl(20,25%,45%)]">{kpi.metric}</span>
+                      <span className="text-xs font-medium text-[hsl(250,15%,50%)]">{kpi.metric}</span>
                       <span className={`flex items-center gap-1 text-xs font-medium ${
                         kpi.trend?.toLowerCase().includes('up') || kpi.trend?.includes('+') ? 'text-green-600' : 'text-red-500'
                       }`}>
@@ -1174,8 +1174,8 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
                         {kpi.trend}
                       </span>
                     </div>
-                    <p className="text-xl font-bold text-[hsl(20,40%,10%)]">{kpi.value}</p>
-                    <p className="text-xs text-[hsl(20,25%,45%)] mt-1">{kpi.insight}</p>
+                    <p className="text-xl font-bold text-[hsl(250,30%,12%)]">{kpi.value}</p>
+                    <p className="text-xs text-[hsl(250,15%,50%)] mt-1">{kpi.insight}</p>
                   </GlassCard>
                 ))}
               </div>
@@ -1185,7 +1185,7 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
           {/* Traffic Breakdown */}
           {traffic.length > 0 && (
             <GlassCard className="p-5">
-              <h3 className="text-base font-semibold text-[hsl(20,40%,10%)] mb-4">Traffic Source Breakdown</h3>
+              <h3 className="text-base font-semibold text-[hsl(250,30%,12%)] mb-4">Traffic Source Breakdown</h3>
               <div className="space-y-3">
                 {traffic.map((t, i) => {
                   const maxClicks = Math.max(...traffic.map(tr => parseInt(tr.clicks?.replace(/,/g, '') || '0') || 1))
@@ -1195,16 +1195,16 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
                       <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-2">
                           {getPlatformIcon(t.source)}
-                          <span className="text-sm font-medium text-[hsl(20,40%,10%)]">{t.source}</span>
+                          <span className="text-sm font-medium text-[hsl(250,30%,12%)]">{t.source}</span>
                         </div>
-                        <div className="flex items-center gap-4 text-xs text-[hsl(20,25%,45%)]">
+                        <div className="flex items-center gap-4 text-xs text-[hsl(250,15%,50%)]">
                           <span>{t.clicks} clicks</span>
                           <span>{t.conversions} conv.</span>
-                          <span className="font-semibold text-[hsl(24,95%,53%)]">${t.epc} EPC</span>
+                          <span className="font-semibold text-[hsl(262,83%,58%)]">${t.epc} EPC</span>
                         </div>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-[hsl(30,30%,90%)]">
-                        <div className="h-full rounded-full bg-gradient-to-r from-[hsl(24,95%,53%)] to-[hsl(12,80%,50%)]" style={{ width: `${pct}%` }} />
+                      <div className="w-full h-2 rounded-full bg-[hsl(250,18%,90%)]">
+                        <div className="h-full rounded-full bg-gradient-to-r from-[hsl(262,83%,58%)] to-[hsl(174,72%,40%)]" style={{ width: `${pct}%` }} />
                       </div>
                     </div>
                   )
@@ -1218,28 +1218,28 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
             {/* A/B Tests */}
             {abTests.length > 0 && (
               <div>
-                <h3 className="text-base font-semibold text-[hsl(20,40%,10%)] mb-3">A/B Test Results</h3>
+                <h3 className="text-base font-semibold text-[hsl(250,30%,12%)] mb-3">A/B Test Results</h3>
                 <div className="space-y-3">
                   {abTests.map((test, i) => (
                     <GlassCard key={i} className="p-4">
-                      <h4 className="text-sm font-semibold text-[hsl(20,40%,10%)] mb-2">{test.test_name}</h4>
+                      <h4 className="text-sm font-semibold text-[hsl(250,30%,12%)] mb-2">{test.test_name}</h4>
                       <div className="grid grid-cols-2 gap-2 mb-2">
-                        <div className={`p-2 rounded-lg text-xs border ${test.winner?.toLowerCase().includes('a') ? 'border-green-300 bg-green-50' : 'border-[hsl(30,35%,88%)]'}`}>
-                          <p className="font-medium text-[hsl(20,40%,10%)]">Variant A</p>
-                          <p className="text-[hsl(20,25%,45%)] mt-0.5">{test.variant_a}</p>
+                        <div className={`p-2 rounded-lg text-xs border ${test.winner?.toLowerCase().includes('a') ? 'border-green-300 bg-green-50' : 'border-[hsl(250,20%,88%)]'}`}>
+                          <p className="font-medium text-[hsl(250,30%,12%)]">Variant A</p>
+                          <p className="text-[hsl(250,15%,50%)] mt-0.5">{test.variant_a}</p>
                           {test.winner?.toLowerCase().includes('a') && (
                             <span className="inline-flex items-center gap-1 mt-1 text-green-600 font-semibold"><FiCheck size={10} /> Winner</span>
                           )}
                         </div>
-                        <div className={`p-2 rounded-lg text-xs border ${test.winner?.toLowerCase().includes('b') ? 'border-green-300 bg-green-50' : 'border-[hsl(30,35%,88%)]'}`}>
-                          <p className="font-medium text-[hsl(20,40%,10%)]">Variant B</p>
-                          <p className="text-[hsl(20,25%,45%)] mt-0.5">{test.variant_b}</p>
+                        <div className={`p-2 rounded-lg text-xs border ${test.winner?.toLowerCase().includes('b') ? 'border-green-300 bg-green-50' : 'border-[hsl(250,20%,88%)]'}`}>
+                          <p className="font-medium text-[hsl(250,30%,12%)]">Variant B</p>
+                          <p className="text-[hsl(250,15%,50%)] mt-0.5">{test.variant_b}</p>
                           {test.winner?.toLowerCase().includes('b') && (
                             <span className="inline-flex items-center gap-1 mt-1 text-green-600 font-semibold"><FiCheck size={10} /> Winner</span>
                           )}
                         </div>
                       </div>
-                      <p className="text-[10px] text-[hsl(20,25%,45%)]">Confidence: {test.confidence}</p>
+                      <p className="text-[10px] text-[hsl(250,15%,50%)]">Confidence: {test.confidence}</p>
                     </GlassCard>
                   ))}
                 </div>
@@ -1249,7 +1249,7 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
             {/* Optimization Suggestions */}
             {suggestions.length > 0 && (
               <div>
-                <h3 className="text-base font-semibold text-[hsl(20,40%,10%)] mb-3">AI Optimization Suggestions</h3>
+                <h3 className="text-base font-semibold text-[hsl(250,30%,12%)] mb-3">AI Optimization Suggestions</h3>
                 <div className="space-y-3">
                   {suggestions.map((s, i) => {
                     const priorityColors: Record<string, string> = {
@@ -1260,13 +1260,13 @@ Please analyze performance, evaluate A/B tests, and provide optimization suggest
                     return (
                       <GlassCard key={i} className="p-4">
                         <div className="flex items-start justify-between mb-1">
-                          <span className="text-xs font-semibold text-[hsl(24,95%,53%)]">{s.area}</span>
+                          <span className="text-xs font-semibold text-[hsl(262,83%,58%)]">{s.area}</span>
                           <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${priorityColors[s.priority?.toLowerCase()] || 'bg-gray-100 text-gray-600'}`}>
                             {s.priority}
                           </span>
                         </div>
-                        <p className="text-sm text-[hsl(20,40%,10%)] mb-1">{s.suggestion}</p>
-                        <p className="text-xs text-[hsl(20,25%,45%)]">Expected impact: {s.expected_impact}</p>
+                        <p className="text-sm text-[hsl(250,30%,12%)] mb-1">{s.suggestion}</p>
+                        <p className="text-xs text-[hsl(250,15%,50%)]">Expected impact: {s.expected_impact}</p>
                       </GlassCard>
                     )
                   })}
@@ -1310,8 +1310,8 @@ function SettingsScreen({ appName, appTagline, onUpdateName, onUpdateTagline }: 
   return (
     <div className="space-y-6 max-w-2xl">
       <div>
-        <h2 className="text-2xl font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em] font-serif">Settings</h2>
-        <p className="text-sm text-[hsl(20,25%,45%)]">Customize your app preferences</p>
+        <h2 className="text-2xl font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em] font-serif">Settings</h2>
+        <p className="text-sm text-[hsl(250,15%,50%)]">Customize your app preferences</p>
       </div>
 
       {saved && <InlineMessage type="success" message="Settings saved successfully!" />}
@@ -1319,45 +1319,45 @@ function SettingsScreen({ appName, appTagline, onUpdateName, onUpdateTagline }: 
       {/* Branding */}
       <GlassCard className="p-6 space-y-5">
         <div className="flex items-center gap-3 mb-1">
-          <div className="w-10 h-10 rounded-xl bg-[hsl(24,95%,53%)]/10 flex items-center justify-center">
-            <FiSettings size={20} className="text-[hsl(24,95%,53%)]" />
+          <div className="w-10 h-10 rounded-xl bg-[hsl(262,83%,58%)]/10 flex items-center justify-center">
+            <FiSettings size={20} className="text-[hsl(262,83%,58%)]" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-[hsl(20,40%,10%)]">Branding</h3>
-            <p className="text-xs text-[hsl(20,25%,45%)]">Change how your app appears in the sidebar and header</p>
+            <h3 className="text-base font-semibold text-[hsl(250,30%,12%)]">Branding</h3>
+            <p className="text-xs text-[hsl(250,15%,50%)]">Change how your app appears in the sidebar and header</p>
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">App Name</label>
+          <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">App Name</label>
           <input
             type="text"
             value={nameInput}
             onChange={e => setNameInput(e.target.value)}
             placeholder="FunnelForge"
-            className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(24,95%,53%)] focus:border-transparent outline-none"
+            className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(250,20%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(262,83%,58%)] focus:border-transparent outline-none"
           />
-          <p className="text-xs text-[hsl(20,25%,45%)] mt-1">This name appears in the sidebar header and page title</p>
+          <p className="text-xs text-[hsl(250,15%,50%)] mt-1">This name appears in the sidebar header and page title</p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Tagline</label>
+          <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">Tagline</label>
           <input
             type="text"
             value={taglineInput}
             onChange={e => setTaglineInput(e.target.value)}
             placeholder="Sales Funnel Automation"
-            className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(30,35%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(24,95%,53%)] focus:border-transparent outline-none"
+            className="w-full px-3 py-2.5 rounded-[0.875rem] border border-[hsl(250,20%,88%)] bg-white text-sm focus:ring-2 focus:ring-[hsl(262,83%,58%)] focus:border-transparent outline-none"
           />
-          <p className="text-xs text-[hsl(20,25%,45%)] mt-1">Short description shown below the app name</p>
+          <p className="text-xs text-[hsl(250,15%,50%)] mt-1">Short description shown below the app name</p>
         </div>
 
         {/* Preview */}
         <div>
-          <label className="block text-sm font-medium text-[hsl(20,40%,10%)] mb-1.5">Preview</label>
-          <div className="inline-flex flex-col gap-0.5 px-5 py-4 rounded-[0.875rem] bg-[hsl(30,38%,95%)] border border-[hsl(30,35%,88%)]">
-            <span className="text-lg font-bold tracking-[-0.01em] text-[hsl(20,40%,10%)] font-serif">{nameInput || 'FunnelForge'}</span>
-            <span className="text-xs text-[hsl(20,25%,45%)]">{taglineInput || 'Sales Funnel Automation'}</span>
+          <label className="block text-sm font-medium text-[hsl(250,30%,12%)] mb-1.5">Preview</label>
+          <div className="inline-flex flex-col gap-0.5 px-5 py-4 rounded-[0.875rem] bg-[hsl(250,22%,95%)] border border-[hsl(250,20%,88%)]">
+            <span className="text-lg font-bold tracking-[-0.01em] text-[hsl(250,30%,12%)] font-serif">{nameInput || 'FunnelForge'}</span>
+            <span className="text-xs text-[hsl(250,15%,50%)]">{taglineInput || 'Sales Funnel Automation'}</span>
           </div>
         </div>
 
@@ -1369,18 +1369,18 @@ function SettingsScreen({ appName, appTagline, onUpdateName, onUpdateTagline }: 
       {/* Products */}
       <GlassCard className="p-6 space-y-4">
         <div className="flex items-center gap-3 mb-1">
-          <div className="w-10 h-10 rounded-xl bg-[hsl(24,95%,53%)]/10 flex items-center justify-center">
-            <FiArchive size={20} className="text-[hsl(24,95%,53%)]" />
+          <div className="w-10 h-10 rounded-xl bg-[hsl(262,83%,58%)]/10 flex items-center justify-center">
+            <FiArchive size={20} className="text-[hsl(262,83%,58%)]" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-[hsl(20,40%,10%)]">Products & Offers</h3>
-            <p className="text-xs text-[hsl(20,25%,45%)]">Your current digital products and affiliate offers</p>
+            <h3 className="text-base font-semibold text-[hsl(250,30%,12%)]">Products & Offers</h3>
+            <p className="text-xs text-[hsl(250,15%,50%)]">Your current digital products and affiliate offers</p>
           </div>
         </div>
         <div className="space-y-2">
           {PRODUCTS.map(p => (
-            <div key={p} className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white border border-[hsl(30,35%,88%)]">
-              <span className="text-sm text-[hsl(20,40%,10%)]">{p}</span>
+            <div key={p} className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white border border-[hsl(250,20%,88%)]">
+              <span className="text-sm text-[hsl(250,30%,12%)]">{p}</span>
               <StatusBadge status="active" />
             </div>
           ))}
@@ -1390,29 +1390,29 @@ function SettingsScreen({ appName, appTagline, onUpdateName, onUpdateTagline }: 
       {/* Connected Platforms */}
       <GlassCard className="p-6 space-y-4">
         <div className="flex items-center gap-3 mb-1">
-          <div className="w-10 h-10 rounded-xl bg-[hsl(24,95%,53%)]/10 flex items-center justify-center">
-            <FiExternalLink size={20} className="text-[hsl(24,95%,53%)]" />
+          <div className="w-10 h-10 rounded-xl bg-[hsl(262,83%,58%)]/10 flex items-center justify-center">
+            <FiExternalLink size={20} className="text-[hsl(262,83%,58%)]" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-[hsl(20,40%,10%)]">Connected Platforms</h3>
-            <p className="text-xs text-[hsl(20,25%,45%)]">Active integrations for distribution and email</p>
+            <h3 className="text-base font-semibold text-[hsl(250,30%,12%)]">Connected Platforms</h3>
+            <p className="text-xs text-[hsl(250,15%,50%)]">Active integrations for distribution and email</p>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {PLATFORMS.map(p => {
             const Icon = p.icon
             return (
-              <div key={p.id} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-[hsl(30,35%,88%)]">
+              <div key={p.id} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-[hsl(250,20%,88%)]">
                 <Icon size={18} style={{ color: p.color }} />
                 <div className="flex-1">
-                  <span className="text-sm font-medium text-[hsl(20,40%,10%)]">{p.label}</span>
+                  <span className="text-sm font-medium text-[hsl(250,30%,12%)]">{p.label}</span>
                 </div>
                 <StatusBadge status={p.id === 'x' ? 'active' : 'draft'} />
               </div>
             )
           })}
         </div>
-        <p className="text-xs text-[hsl(20,25%,45%)]">Twitter/X and Gmail are connected via Composio. Other platforms require manual API setup.</p>
+        <p className="text-xs text-[hsl(250,15%,50%)]">Twitter/X and Gmail are connected via Composio. Other platforms require manual API setup.</p>
       </GlassCard>
     </div>
   )
@@ -1499,15 +1499,15 @@ export default function FunnelForgePage() {
   }, [])
 
   return (
-    <div className="flex min-h-screen" style={{ background: 'linear-gradient(135deg, hsl(30,50%,97%) 0%, hsl(20,45%,95%) 35%, hsl(40,40%,96%) 70%, hsl(15,35%,97%) 100%)' }}>
+    <div className="flex min-h-screen" style={{ background: 'linear-gradient(135deg, hsl(250,30%,97%) 0%, hsl(260,25%,95%) 35%, hsl(240,20%,96%) 70%, hsl(270,20%,97%) 100%)' }}>
       <Sidebar active={activeScreen} onNavigate={setActiveScreen} appName={appName} appTagline={appTagline} />
 
       <main className="flex-1 min-h-screen overflow-y-auto">
         {/* Header */}
-        <header className="sticky top-0 z-10 px-8 py-4 border-b border-[hsl(30,35%,88%)] bg-[hsl(30,40%,98%)]/80 backdrop-blur-[16px]">
+        <header className="sticky top-0 z-10 px-8 py-4 border-b border-[hsl(250,20%,88%)] bg-[hsl(250,25%,98%)]/80 backdrop-blur-[16px]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <h2 className="text-lg font-bold text-[hsl(20,40%,10%)] tracking-[-0.01em]">
+              <h2 className="text-lg font-bold text-[hsl(250,30%,12%)] tracking-[-0.01em]">
                 {activeScreen === 'dashboard' && 'Campaign Hub'}
                 {activeScreen === 'generator' && 'Content Generator'}
                 {activeScreen === 'content-bank' && 'Content Bank'}
@@ -1519,7 +1519,7 @@ export default function FunnelForgePage() {
               <StatusBadge status="active" />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-[hsl(20,25%,45%)]">{contentBank.length} content pieces</span>
+              <span className="text-xs text-[hsl(250,15%,50%)]">{contentBank.length} content pieces</span>
             </div>
           </div>
         </header>
